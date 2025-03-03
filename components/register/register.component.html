@@ -1,0 +1,27 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <label>Name:</label>
+    <input type="text" formControlName="name" />
+  
+    <label>Email:</label>
+    <input type="email" formControlName="email" />
+    @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched){
+        <div>יש להזין אימייל תקין</div>
+    }
+
+    <label>Password:</label>
+    <input type="password" formControlName="password" />
+
+    @if(registerForm.get('password')?.invalid && registerForm.get('password')?.touched){
+        <div>הסיסמה חייבת להיות לפחות 6 תווים</div>
+    }
+    <label>Role:</label>
+    <select formControlName="role">
+        <option value="teacher">Teacher</option>
+        <option value="student">Student</option>
+        <option value="admin">Admin</option>
+
+    </select>
+    <button type="submit" [disabled]="registerForm.invalid">הירשם</button>
+  </form>
+  <a routerLink="/login">כבר יש לך חשבון? התחבר כאן</a>
+  
