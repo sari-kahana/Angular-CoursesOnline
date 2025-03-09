@@ -29,7 +29,6 @@ export class CoursesService {
   unEnroll(courseId: number, userId: number): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    // return this.http.delete(`${this.apiUrl}/${courseId}/unenroll`, { userId }, {headers});
     return this.http.delete(`${this.apiUrl}/${courseId}/unenroll`, {
       headers,
       body: { userId }
@@ -40,18 +39,17 @@ export class CoursesService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${this.apiUrl}`,{title, description, teacherId}, { headers });
   }
-  // deleteCourse(courseId:number): Observable<any> {
+  updateCourse(id: number, title: string, description: string, teacherId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.apiUrl}/${id}`, { title, description, teacherId }, { headers });
+  }
 
-  // }
+  deleteCourse(courseId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.apiUrl}/${courseId}`, { headers });
+  }
 }
 
-
-
-
-
-// leaveCourse(courseId: number, userId: number): Observable<any> {
-//   const token = localStorage.getItem('authToken');
-//   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-//   return this.http.post(`${this.apiUrl}/${courseId}/leave`, { userId }, { headers });
-// }
 

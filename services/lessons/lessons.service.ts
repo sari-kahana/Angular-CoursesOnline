@@ -19,20 +19,20 @@ export class LessonsService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.apiUrl}/${courseId}/lessons/${lessonId}`, { headers });
   }
-  // addLesson(title:string, content:string, courseId:number):Observable<any>{
-  //   const token = localStorage.getItem('token');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   return this.http.post(`${this.apiUrl}/${courseId}/lessons`, {title, content}, { headers });
-  // }
-  // deleteLesson(lessonId:number):Observable<any>{
-  //   const token = localStorage.getItem('token');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   return this.http.delete(`${this.apiUrl}/lessons/${lessonId}`, { headers });
-  // }
-  // updateLesson(lessonId:number, title:string, content:string):Observable<any>{
-  //   const token = localStorage.getItem('token');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   return this.http.put(`${this.apiUrl}/lessons/${lessonId}`, {title, content}, { headers });
-  // }
+  addLesson(title:string, content:string, courseId:number):Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.apiUrl}/${courseId}/lessons`, {title, content}, { headers });
+  }
+  deleteLesson(lessonId:number,courseId:number):Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.apiUrl}/${courseId}/lessons/${lessonId}`, { headers });
+  }
+  updateLesson(lessonId:number,courseId:number, title:string, content:string):Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.apiUrl}/${courseId}/lessons/${lessonId}`, {title, content}, { headers });
+  }
 
 }

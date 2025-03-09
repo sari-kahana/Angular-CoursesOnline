@@ -1,0 +1,19 @@
+<mat-dialog-content>
+    <form [formGroup]="addCourseForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput id="title" formControlName="title" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput id="description" formControlName="description" />
+            @if(addCourseForm.get('description')?.invalid && addCourseForm.get('description')?.touched){
+            <mat-error>description is required</mat-error>
+            }
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="addCourseForm.invalid">Add ➕</button>
+    </form>
+</mat-dialog-content>

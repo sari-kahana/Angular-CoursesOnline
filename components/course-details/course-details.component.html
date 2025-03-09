@@ -2,6 +2,11 @@ title: {{course?.title}}, description: {{course?.description}}, teacherId: {{cou
 lessons:
 <ul>
     @for(lesson of lessons; track lesson.id){
-        <li>{{lesson.title}}</li>
+        <li>{{lesson.title}}
+            <button mat-icon-button (click)="deleteLesson(lesson.id)">🗑️delete</button>
+            <button mat-icon-button (click)="updateLesson(lesson.id)">📝edit</button>
+        </li>
     }
+    <button mat-flat-button (click)="addlesson()">Add Lesson ➕</button>
 </ul>
+

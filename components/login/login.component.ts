@@ -34,7 +34,7 @@ export class LoginComponent {
           localStorage.setItem('token', response.token);
           localStorage.setItem('userId', response.userId);
           console.log("login succeed");
-          
+          this.router.navigate(['/']);
         },
         error: (err) => console.error(err)
       });

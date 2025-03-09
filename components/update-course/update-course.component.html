@@ -1,0 +1,22 @@
+<mat-dialog-content>
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput id="title" formControlName="title" />
+            @if(updateForm.get('title')?.invalid && updateForm.get('title')?.touched){
+                <mat-error>title is required</mat-error>
+                }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput id="description" formControlName="description" />
+            @if(updateForm.get('description')?.invalid && updateForm.get('description')?.touched){
+            <mat-error>description is required</mat-error>
+            }
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="updateForm.invalid">Edit 📝</button>
+    </form>
+</mat-dialog-content>

@@ -1,0 +1,19 @@
+<mat-dialog-content>
+    <form [formGroup]="addLessonForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput id="title" formControlName="title" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Content</mat-label>
+            <input matInput id="content" formControlName="content" />
+            @if(addLessonForm.get('content')?.invalid && addLessonForm.get('content')?.touched){
+            <mat-error>content is required</mat-error>
+            }
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="addLessonForm.invalid">Add ➕</button>
+    </form>
+</mat-dialog-content>

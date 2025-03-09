@@ -1,11 +1,44 @@
-<p>courses</p>
+<button mat-flat-button (click)="openForm()">Add Course ➕</button>
+
 @for(course of courses; track course.id){
     <li>{{course.title}}
-         <button (click)="enrollToCourse(course.id)" >enroll</button>
-         <button (click)="leaveCourse(course.id)" >leave</button>
-         <button (click)="showCourseDetails(course.id)">more details</button>
+         <button (click)="enrollToCourse(course.id)" >Enroll Course 👩‍💻</button>
+         <button (click)="leaveCourse(course.id)" >Leave Course 👋</button>
+         <button (click)="showCourseDetails(course.id)">More Details 📜</button>
+         <button (click)="deleteCourse(course.id)">Delete Course 🗑️</button>
+         <button mat-flat-button (click)="openUpdateForm(course.id)">Update Course 📝</button>
+
     </li>
     @if(course.id == courseToShow){
         <app-course-details [courseId]="course.id"></app-course-details>
     }
 }
+
+
+<!-- <div class="container">
+    <mat-list>
+        @for(course of courses; track course.id){
+        <mat-list-item>
+            <mat-card class="course-card">
+                <mat-card-title>{{ course.title }}</mat-card-title>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary" (click)="enrollToCourse(course.id)">
+                        <mat-icon>person_add</mat-icon> Enroll
+                    </button>
+                    <button mat-raised-button color="warn" (click)="leaveCourse(course.id)">
+                        <mat-icon>exit_to_app</mat-icon> Leave
+                    </button>
+                    <button mat-raised-button color="accent" (click)="showCourseDetails(course.id)">
+                        <mat-icon>info</mat-icon> More Details
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-list-item>
+        @if(course.id == courseToShow){
+            <app-course-details [courseId]="course.id"></app-course-details>
+        }
+        }
+    </mat-list>
+
+    
+</div> -->
