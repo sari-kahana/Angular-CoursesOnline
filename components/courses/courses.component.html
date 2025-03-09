@@ -1,0 +1,11 @@
+<p>courses</p>
+@for(course of courses; track course.id){
+    <li>{{course.title}}
+         <button (click)="enrollToCourse(course.id)" >enroll</button>
+         <button (click)="leaveCourse(course.id)" >leave</button>
+         <button (click)="showCourseDetails(course.id)">more details</button>
+    </li>
+    @if(course.id == courseToShow){
+        <app-course-details [courseId]="course.id"></app-course-details>
+    }
+}

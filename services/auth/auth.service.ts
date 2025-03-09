@@ -15,4 +15,8 @@ export class AuthService {
   register(data: { name: string; email: string; password: string; role: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
+  getUserId():number{
+    const userId = localStorage.getItem('userId');
+    return userId?+userId:0;
+  }
 }

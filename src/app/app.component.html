@@ -1,10 +1,11 @@
 <!-- <app-login></app-login>
 <app-register></app-register>
 <mat-slide-toggle>Toggle me!</mat-slide-toggle> -->
-<nav>
-    <button mat-button (click)= ""> Open dialog</button>
 
-    <button routerLink="register" routerLinkActive="active-link">Register</button>
-    <button routerLink="login" routerLinkActive="active-link">Login</button>
+
+<nav>
+    <button mat-flat-button (click)="openRegisteration()">Register</button>
+    <button mat-flat-button (click)="openLogin()">Login</button>
+    <a routerLink="courses" routerLinkActive="active">Courses</a>
 </nav>
 <router-outlet></router-outlet>

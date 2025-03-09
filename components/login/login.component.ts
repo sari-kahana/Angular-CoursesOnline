@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -9,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogContent } from '@angular/material/dialog';
+import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -32,8 +32,9 @@ export class LoginComponent {
       this.authService.login({email: this.loginForm.get('email')?.value, password:this.loginForm.get('password')?.value}).subscribe({
         next: (response) => {
           localStorage.setItem('token', response.token);
-          console.log(response);
-          this.router.navigate(['/']);
+          localStorage.setItem('userId', response.userId);
+          console.log("login succeed");
+          
         },
         error: (err) => console.error(err)
       });

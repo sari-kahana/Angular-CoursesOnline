@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <label>Name:</label>
     <input type="text" formControlName="name" />
   
@@ -24,4 +24,44 @@
     <button type="submit" [disabled]="registerForm.invalid">הירשם</button>
   </form>
   <a routerLink="/login">כבר יש לך חשבון? התחבר כאן</a>
-  
+   -->
+
+
+
+
+<mat-dialog-content>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput id="name" formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput id="email" type="email" formControlName="email" />
+            @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched){
+            <mat-error>email is required</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput id="password" type="password" formControlName="password" />
+            @if(registerForm.get('password')?.invalid && registerForm.get('password')?.touched){
+            <mat-error>The password must contain at least 6 characters.</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+                <mat-option value="teacher">Teacher</mat-option>
+                <mat-option value="student">Student</mat-option>
+                <mat-option value="admin">Admin</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="registerForm.invalid">Registeration</button>
+    </form>
+</mat-dialog-content>

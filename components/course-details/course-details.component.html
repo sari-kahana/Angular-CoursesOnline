@@ -1,0 +1,7 @@
+title: {{course?.title}}, description: {{course?.description}}, teacherId: {{course?.teacherId}}
+lessons:
+<ul>
+    @for(lesson of lessons; track lesson.id){
+        <li>{{lesson.title}}</li>
+    }
+</ul>
