@@ -31,8 +31,10 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.login({ email: this.loginForm.get('email')?.value, password: this.loginForm.get('password')?.value }).subscribe({
         next: (response) => {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('userId', response.userId);
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('userId', response.userId);
+          }
           alert("login succeed");
           this.router.navigate(['/']);
         },
