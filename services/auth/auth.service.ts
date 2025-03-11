@@ -16,10 +16,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
   getUserId():number{
-    let userId!: string|null;
-    if (typeof window !== 'undefined') {
-      userId = localStorage.getItem('userId');
-    }
+    const userId = localStorage.getItem('userId');
     return userId?+userId:0;
   }
 }
