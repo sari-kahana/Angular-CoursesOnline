@@ -8,17 +8,18 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CourseDetailsComponent, MatListModule, MatCardModule, MatIconModule],
+  imports: [CourseDetailsComponent, MatListModule, MatCardModule, MatIconModule, MatButtonModule, MatExpansionModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
 export class CoursesComponent {
   courses: Course[] = [];
-  courseToShow: number = -1;
   constructor(private courseService: CoursesService, private authService: AuthService, private router: Router) {
     this.courseService.getCourses().subscribe({
       next: (courses) => {
@@ -27,6 +28,7 @@ export class CoursesComponent {
       error: (err) => console.error(err)
     });
   }
+  
   enrollToCourse(courseId: number) {
     const userId = this.authService.getUserId();
     this.courseService.enrollToCourse(courseId, userId).subscribe({
@@ -36,6 +38,7 @@ export class CoursesComponent {
       error: (err) => console.error(err)
     });
   }
+
   leaveCourse(courseId: number) {
     const userId = this.authService.getUserId();
     this.courseService.unEnroll(courseId, userId).subscribe({
@@ -45,22 +48,27 @@ export class CoursesComponent {
       error: (err) => console.error(err)
     });
   }
-  showCourseDetails(courseId: number){
-    this.courseToShow = courseId;
-  }
+
   openForm() {
     this.router.navigate(['/courses/add-course']);
   }
+
   openUpdateForm(courseId: number){
     this.router.navigate([`/courses/${courseId}/update`]);
   }
+
   deleteCourse(courseId: number) {
     this.courseService.deleteCourse(courseId).subscribe({
       next: (response) => {
         console.log(response.message);
         this.courses = this.courses.filter(course => course.id !== courseId);
       },
-      error: (err) => console.error(err)
+      error: (err) =>{
+        console.error(err);
+        if (err.status === 403) {
+          alert("You do not have permission to perform this action");
+        }
+      }
     });
   }
 

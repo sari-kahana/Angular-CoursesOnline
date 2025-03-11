@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-add-lesson',
@@ -17,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
       MatFormFieldModule,
       MatInputModule,
       MatButtonModule,
-      MatSelectModule],
+      MatSelectModule,MatCardModule],
   templateUrl: './add-lesson.component.html',
   styleUrl: './add-lesson.component.css'
 })
@@ -38,10 +39,15 @@ export class AddLessonComponent {
       if (this.addLessonForm.valid) {
         this.lessonService.addLesson(this.addLessonForm.get('title')?.value, this.addLessonForm.get('content')?.value, this.courseId).subscribe({
           next: (response) => {
-            console.log(response.message);
+           alert(response.message);
             this.router.navigate([`/courses`]);
           },
-          error: (err) => console.error(err)
+          error: (err) =>{
+            console.error(err);
+            if (err.status === 403) {
+              alert("You do not have permission to perform this action");
+            }
+          }
         });
       }
     }

@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-update-course',
@@ -17,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
       MatFormFieldModule,
       MatInputModule,
       MatButtonModule,
-      MatSelectModule],
+      MatSelectModule, MatCardModule],
   templateUrl: './update-course.component.html',
   styleUrl: './update-course.component.css'
 })
@@ -40,10 +41,15 @@ export class UpdateCourseComponent {
       const teacherId = this.authService.getUserId();
       this.courseService.updateCourse(this.courseId,this.updateForm.get('title')?.value, this.updateForm.get('description')?.value, teacherId).subscribe({
         next: (response) => {
-          console.log("update succeed");
+          alert(response.message);
           this.router.navigate(['/courses']);
         },
-        error: (err) => console.error(err)
+        error: (err) =>{
+          console.error(err);
+          if (err.status === 403) {
+            alert("You do not have permission to perform this action");
+          }
+        }
       });
     }
   }

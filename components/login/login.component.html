@@ -1,14 +1,14 @@
-<mat-dialog-content>
-  <mat-card class="auth-card">
+<mat-card>
     <mat-card-title>התחברות</mat-card-title>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="outline">
-        <mat-label>אימייל</mat-label>
-        <input matInput type="email" formControlName="email" />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput id="email" type="email" formControlName="email" />
         @if(loginForm.get('email')?.invalid && loginForm.get('email')?.touched){
-        <mat-error>יש להזין אימייל תקין</mat-error>
+        <mat-error>email is required</mat-error>
         }
-      </mat-form-field>
+    </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>סיסמה</mat-label>
@@ -17,8 +17,14 @@
         <mat-error>הסיסמה חייבת להיות לפחות 6 תווים</mat-error>
         }
       </mat-form-field>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput id="password" type="password" formControlName="password" />
+        @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
+        <mat-error>The password must contain at least 6 characters.</mat-error>
+        } 
+     </mat-form-field> -->
 
       <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">התחבר</button>
     </form>
-  </mat-card>
-</mat-dialog-content>
+</mat-card>

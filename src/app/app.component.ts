@@ -39,19 +39,7 @@ import { RegisterComponent } from '../../components/register/register.component'
 
 export class AppComponent {
   title = 'OnlineCourseManagementProject';
-  constructor(public dialog: MatDialog) { }
 
-  openRegisteration() {
-    this.dialog.open(RegisterComponent, {
-      width: '400px'
-    });
-  }
-
-  openLogin() {
-    this.dialog.open(LoginComponent, {
-      width: '400px'
-    });
-  }
 }
 
 

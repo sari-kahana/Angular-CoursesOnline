@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    justify-content: center; /* ממקם את כל האלמנטים במרכז */
+    align-items: center;
+    gap: 20px; /* רווחים נוחים בין הכפתורים והקישור */
+    padding: 16px;
+  }
+  
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    background-color: #0056ab;
+    padding: 10px 16px;
+    min-width: 90px;
+    height: 20px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  a:hover {
+    background-color: #0080ffdc; 
+  }
+  
+  

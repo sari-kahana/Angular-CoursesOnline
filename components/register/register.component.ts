@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from '../../services/auth/auth.service';
+import { MatCardModule } from '@angular/material/card';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { AuthService } from '../../services/auth/auth.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,MatCardModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -38,7 +39,7 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
-          console.log(response.message);
+          alert(response.message);
           this.router.navigate(['/login']);
         },
         error: (err) => console.error(err)

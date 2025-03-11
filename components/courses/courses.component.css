@@ -1,31 +1,78 @@
-/* ממרכז את הרשימה בעמוד */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* גובה מלא של הדף */
-    flex-direction: column;
-  }
-  
-  /* עיצוב הכרטיס של כל קורס */
-  .course-card {
-    width: 400px; /* רוחב אחיד */
-    padding: 15px;
-    text-align: center;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    margin: 15px 0;
-  }
-  
-  /* עיצוב הכפתורים */
-  mat-card-actions {
-    display: flex;
-    justify-content: space-around;
-    padding-top: 10px;
-  }
-  
-  /* מוסיף רווח בין האייקון לטקסט */
-  mat-icon {
-    margin-right: 5px;
-  }
-  
+.header {
+  display: flex;
+  justify-content: center; /* ממקם את הכפתור באמצע */
+  margin: 24px; /* נותן לו קצת יותר רווח מתחת */
+}
+
+/* כפתור הוספת קורס */
+.add-course-btn {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 24px;
+  background-color: #005cbb; /* כחול כמו כפתור יציאה */
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* רווח בין האייקון לטקסט */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+
+/* אפקט בלחיצה */
+.add-course-btn:hover {
+  background-color: #004899;
+  transform: scale(1.05);
+}
+
+.add-course-btn mat-icon {
+  color: white;
+  font-size: 24px;
+}
+
+.courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+ .course-card {
+  width: 320px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+  padding: 20px;
+}
+
+/* ריחוף עדין על הכרטיס */
+.course-card:hover {
+  transform: scale(1.02);
+}
+mat-expansion-panel {
+  margin-bottom: 16px; /* רווח לפני הכפתורים */
+}
+
+/* כותרת הקורס */
+.course-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #005cbb;
+  text-align: center;
+  margin-top: 8px; 
+}
+
+/* קבוצת הכפתורים */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* רווח בין השורות */
+}
+
+/* שורות הכפתורים */
+.button-row {
+  display: flex;
+  gap: 12px; /* רווח בין הכפתורים */
+}
+

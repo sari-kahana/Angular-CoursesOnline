@@ -1,4 +1,4 @@
-<mat-dialog-content>
+<mat-card>
     <form [formGroup]="updateLessonForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="fill">
@@ -19,5 +19,5 @@
 
         <button mat-raised-button type="submit" [disabled]="updateLessonForm.invalid">Edit 📝</button>
     </form>
-</mat-dialog-content>
+</mat-card>
 

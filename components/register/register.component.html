@@ -29,7 +29,9 @@
 
 
 
-<mat-dialog-content>
+<mat-card>
+    <mat-card-title>הרשמה</mat-card-title>
+
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="fill">
@@ -64,4 +66,4 @@
 
         <button mat-raised-button type="submit" [disabled]="registerForm.invalid">Registeration</button>
     </form>
-</mat-dialog-content>
+</mat-card>

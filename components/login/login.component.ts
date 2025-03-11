@@ -14,13 +14,13 @@ import { AuthService } from '../../services/auth/auth.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-imports: [ReactiveFormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, MatDialogContent ],
+  imports: [ReactiveFormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, MatDialogContent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  
+
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,16 +29,17 @@ export class LoginComponent {
   }
   onSubmit() {
     if (this.loginForm.valid) {
-      this.authService.login({email: this.loginForm.get('email')?.value, password:this.loginForm.get('password')?.value}).subscribe({
+      this.authService.login({ email: this.loginForm.get('email')?.value, password: this.loginForm.get('password')?.value }).subscribe({
         next: (response) => {
           localStorage.setItem('token', response.token);
           localStorage.setItem('userId', response.userId);
-          console.log("login succeed");
+          alert("login succeed");
           this.router.navigate(['/']);
         },
-        error: (err) => console.error(err)
+        error: (err) => {
+          console.error(err)
+        }
       });
     }
   }
-
 }

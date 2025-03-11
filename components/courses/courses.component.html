@@ -1,4 +1,4 @@
-<button mat-flat-button (click)="openForm()">Add Course ➕</button>
+<!-- <button mat-flat-button (click)="openForm()">Add Course ➕</button>
 
 @for(course of courses; track course.id){
     <li>{{course.title}}
@@ -12,33 +12,59 @@
     @if(course.id == courseToShow){
         <app-course-details [courseId]="course.id"></app-course-details>
     }
-}
-
-
-<!-- <div class="container">
-    <mat-list>
-        @for(course of courses; track course.id){
-        <mat-list-item>
-            <mat-card class="course-card">
-                <mat-card-title>{{ course.title }}</mat-card-title>
-                <mat-card-actions align="end">
-                    <button mat-raised-button color="primary" (click)="enrollToCourse(course.id)">
-                        <mat-icon>person_add</mat-icon> Enroll
-                    </button>
-                    <button mat-raised-button color="warn" (click)="leaveCourse(course.id)">
-                        <mat-icon>exit_to_app</mat-icon> Leave
-                    </button>
-                    <button mat-raised-button color="accent" (click)="showCourseDetails(course.id)">
-                        <mat-icon>info</mat-icon> More Details
-                    </button>
-                </mat-card-actions>
-            </mat-card>
-        </mat-list-item>
-        @if(course.id == courseToShow){
-            <app-course-details [courseId]="course.id"></app-course-details>
-        }
-        }
-    </mat-list>
-
-    
+} -->
+<!-- <div class="header">
+    <button mat-fab color="primary" (click)="openForm()">
+        <mat-icon>add</mat-icon>Add Course
+    </button>
 </div> -->
+<div class="header">
+    <button mat-flat-button color="primary" class="add-course-btn" (click)="openForm()">
+        <mat-icon>add</mat-icon> Add Course
+    </button>
+</div>
+
+<div class="courses-container">
+    @for(course of courses; track course.id){
+        <mat-card class="course-card">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="course-title">
+                        {{ course.title }}
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                        <mat-icon>expand_more</mat-icon>
+                    </mat-panel-description> -->
+                </mat-expansion-panel-header>
+                <!-- כאן יוצגו פרטי הקורס -->
+                <app-course-details [courseId]="course.id"></app-course-details>
+            </mat-expansion-panel>
+        
+            <mat-card-content>
+                <div class="button-group">
+                    <!-- שורה של הרשמה ויציאה -->
+                    <div class="button-row">
+                        <button mat-button color="accent" (click)="enrollToCourse(course.id)">
+                            <mat-icon>person_add</mat-icon> Enroll
+                        </button>
+        
+                        <button mat-button color="warn" (click)="leaveCourse(course.id)">
+                            <mat-icon>person_remove</mat-icon> UnEnroll
+                        </button>
+                    </div>
+        
+                    <!-- שורה של עדכון ומחיקה -->
+                    <div class="button-row">
+                        <button mat-button color="accent" (click)="openUpdateForm(course.id)">
+                            <mat-icon>edit</mat-icon> Update
+                        </button>
+        
+                        <button mat-button color="warn" (click)="deleteCourse(course.id)">
+                            <mat-icon>delete</mat-icon> Delete
+                        </button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    }
+</div>

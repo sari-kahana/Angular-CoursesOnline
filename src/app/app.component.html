@@ -3,9 +3,20 @@
 <mat-slide-toggle>Toggle me!</mat-slide-toggle> -->
 
 
-<nav>
+<!-- <nav>
     <button mat-flat-button (click)="openRegisteration()">Register</button>
     <button mat-flat-button (click)="openLogin()">Login</button>
     <a routerLink="courses" routerLinkActive="active">Courses</a>
+</nav> -->
+<nav >
+    <a routerLink="register" routerLinkActive="active">
+        Register
+    </a>
+    <a routerLink="login" routerLinkActive="active">
+        Login
+    </a>
+    <a routerLink="courses" routerLinkActive="active">
+        Courses
+    </a>
 </nav>
 <router-outlet></router-outlet>
