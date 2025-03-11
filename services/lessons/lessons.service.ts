@@ -32,7 +32,7 @@ export class LessonsService {
   updateLesson(lessonId:number,courseId:number, title:string, content:string):Observable<any>{
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put(`${this.apiUrl}/${courseId}/lessons/${lessonId}`, {title, content}, { headers });
+    return this.http.put(`${this.apiUrl}/${courseId}/lessons/${lessonId}`, {title, content, courseId}, { headers });
   }
 
 }
